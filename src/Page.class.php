@@ -11,19 +11,13 @@ class Page {
   private $template;
   private $wrapperCount = 0;
 
-  /**
-  *
-  */
-  function __construct() {
-
-  }
 
   /**
   * Prints the generated html to screen.
   * @param html is the string to be printed.
   */
 
-  function render($html) {
+  public function render($html) {
     if (isset($html)) {
       print $html;
     } else {
@@ -43,9 +37,9 @@ class Page {
   * @param custom is any custom html string that needs to be in the head
   * @return html the html string ready to be rendered.
   */
-  function make_head($title, $langauge = 'en', $charset = 'utf-8', $styles,
+  function make_head($title, $language = 'en', $charset = 'utf-8', $styles,
                     $scripts, $metadata, $custom ) {
-    $html = '<!DOCTYPE html>
+    $html = '<!DOCTYPE html><head>
     <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
     <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
     <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
@@ -58,30 +52,21 @@ class Page {
     if (isset($metadata)) {
       foreach($metadata as $m) {
         $html .= '<meta ';
-        foreach($m as $k=>$v) {
-          $html .= $k . '="' . $v . '" ';
-        }
-        $html .= '>';
+        $html .= Utilities::add_attributes($m) . '>';
       }
     }
 
     if (isset($styles)) {
       foreach($styles as $style) {
         $html .= '<link rel="stylesheet" ';
-        foreach($style as $k=>$v) {
-          $html .= $k . '="' . $v . '" ';
-        }
-        $html .= '>';
+        $html .= Utilities::add_attributes($style) . '>';
       }
     }
 
     if (isset($scripts)) {
       foreach($scripts as $script) {
         $html .= '<script ';
-        foreach($script as $k=>$v) {
-          $html .= $k . '="' . $v . '" ';
-        }
-        $html .= '></script>';
+        $html .= Utilities::add_attributes($script) . '></script>';
       }
     }
 
