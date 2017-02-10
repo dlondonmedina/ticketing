@@ -4,7 +4,7 @@ require('sec/config.php');
 $_SERVER = array("REMOTE_USER" => "medinad");
 
 function class_autoloader($class_name) {
-  require(WEB_ROOT . 'src/' . $class_name . 'class.php');
+  require(WEB_ROOT . 'src/' . $class_name . '.php');
 }
 
 spl_autoload_register("class_autoloader");
@@ -32,5 +32,4 @@ $meta = array(
   ),
 );
 $html = $page->make_head('Helpdesk', 'en', 'utf-8', $styles, $scripts, $meta);
-print $html;
 $page->render($html);

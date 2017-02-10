@@ -22,10 +22,10 @@ class Utilities {
     return $str;
   }
 
-  public static function make_div($html, $attr_ar = array()) {
-    $str = '<div';
+  public static function add_tags($tag, $html, $attr_ar = array()) {
+    $str = '<' . $tag . ' ';
     $str .= !empty($attr_ar) ? self::add_attributes($attr_ar) . '>': '>';
-    $str .= $html . '</div>';
+    $str .= $html . '</' . $tag . '>';
 
     return $str;
 
