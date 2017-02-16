@@ -1,4 +1,8 @@
 <?php
+/**
+* This class is the report object. It has methods to create a new ticket.
+* It also has a method to resolve tickets.
+*/
 
 class Report {
     private $conn;
@@ -9,9 +13,13 @@ class Report {
         $this->user = $_SERVER['REMOTE_USER'];
     }
 
-    public function recordReport($vals) {
+    /**
+    * Create a new report in the databases.
+    * @param vals is an array of values from the form.
+    * @param resolved is the resolution state of the ticket. Default unresolved.
+    */
+    public function recordReport($vals, $resolved = "unresolved") {
         $conn = $this->conn;
-        $resolve = "unresolved";
         try {
             $stmt = $conn->prepare("INSERT INTO reports (netid, message, topic, urgency, status) values (:netid, :message, :topic, :urgency, :status);");
             $stmt->bindParam(':netid', $this->id, PDO::PARAM_STR);
@@ -20,18 +28,25 @@ class Report {
             $stmt->bindParam(':urgency', $vals['urgency'], PDO::PARAM_STR);
             $stmt->bindParam(':status', $resolve, PDO::PARAM_STR);
             $stmt->execute();
+            // would be good to flash a success message here.
         } catch (Exception $e) {
             echo "Failed to save message with error: " . $e->getMessage();
             die();
         }
     }
 
+    /**
+    * Resolve ticket or update ticket with note.
+    * @param vals is an array of resolution info.
+    * vals = (resolved=>'', 'ticket'=>'ticket_id', 'note'=> '')
+    */
     public function resolveTicket($vals) {
         $conn = $this->conn;
         if (in_array($this->id, ADMIN_USERS)) {
-            // replace "resolved" with timestamp
             if(isset($vals['resolved'])) {
-                $stmt = $conn->prepare('UPDATE reports SET status=REPLACE(status, "unresolved", "resolved") WHERE id=:id' );
+                $res = date('m/d/y @ h:m');
+                $stmt = $conn->prepare('UPDATE reports SET status=REPLACE(status, "unresolved", :res) WHERE id=:id' );
+                $stmt->bindParam(':res', $res, PDO::PARAM_STR);
                 $stmt->bindParam(':id', $vals['ticket'], PDO::PARAM_INT);
                 $stmt->execute();
             }
