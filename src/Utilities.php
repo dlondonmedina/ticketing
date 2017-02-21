@@ -14,12 +14,20 @@ class Utilities {
   // Add attributes to html tag
   public static function add_attributes($attr_ar = array()) {
     $str = ' ';
-
-    foreach($attr_ar as $key => $value) {
-      $str .= is_numeric($key) ? $value . ' ': $key . '="' . $value .'" ';
+    if (!empty($attr_ar)) {
+        foreach($attr_ar as $key => $value) {
+            $str .= is_numeric($key) ? $value . ' ': $key . '="' . $value .'" ';
+        }
+    } else {
+        $str = '';
     }
 
     return $str;
+  }
+
+  public static function add_label($label, $value) {
+      $str = '<label for="' . $label . '">' . $value . '</label>';
+      return $str;
   }
 
   public static function add_tags($tag, $html, $attr_ar = array()) {

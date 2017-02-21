@@ -39,34 +39,34 @@ class Page {
   */
   function make_head($title, $language = 'en', $charset = 'utf-8', $styles,
                     $scripts, $metadata, $custom ) {
-    $html = '<!DOCTYPE html><head>
+    $html = '<!DOCTYPE html>
     <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
     <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
     <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
     <!--[if gt IE 8]><!--> <html lang="' . $language . '"> <!--<![endif]--><head>';
 
     $html .= '<meta charset="' . $charset . '">';
-    $html .= '<title>' . $title . '</title>';
+    $html .= '<title>' . $title . '</title>' . "\n";
 
     // Add metadata
     if (isset($metadata)) {
       foreach($metadata as $m) {
         $html .= '<meta ';
-        $html .= Utilities::add_attributes($m) . '>';
+        $html .= Utilities::add_attributes($m) . '>' . "\n";
       }
     }
 
     if (isset($styles)) {
       foreach($styles as $style) {
         $html .= '<link rel="stylesheet" ';
-        $html .= Utilities::add_attributes($style) . '>';
+        $html .= Utilities::add_attributes($style) . '>' . "\n";
       }
     }
 
     if (isset($scripts)) {
       foreach($scripts as $script) {
         $html .= '<script ';
-        $html .= Utilities::add_attributes($script) . '></script>';
+        $html .= Utilities::add_attributes($script) . '></script>'  . "\n";
       }
     }
 
@@ -93,17 +93,31 @@ class Page {
     if (isset($wrappers)) {
       foreach($wrappers as $wrap) {
         $html .= '<' . $wrap['tag'] . ' ';
-        foreach($wrap['attributes'] as $k => $v) {
-          $html .= $k . '"' . $v . '" ';
-        }
+        $html .= Utilities::add_attributes($wrap['attributes']);
+        $html .= '>';
         // count how many divs need to be closed.
         $this->wrapperCount++;
       }
-      $html .= '>';
     }
 
     return $html;
   }
+
+
+  /**
+  * Create block div
+  * @param content is the content in div.
+  * @param attr_ar is the attributes of div.
+  * @return html string.
+  */
+  public function create_part($content, $attr_ar = array()) {
+      $str = '<div ';
+      $str .= isset($attr_ar) ? Utilities::add_attributes($attr_ar) . '>' : '>';
+      $str .= $content;
+      $str .= '</div>';
+      return $str;
+  }
+
 
   /**
   * Ends the body section with footer and ends html

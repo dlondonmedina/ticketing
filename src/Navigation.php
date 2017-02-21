@@ -6,45 +6,48 @@ class Navigation {
 
   /**
   * Makes a menu with anchor tabs
-  * @param links is a complex array of list items and links
-  * $links = [
-  *   [
-  *     'line_atts' => [],
-  *     'value' => 'value',
-  *     'url' => 'url',
-  *     'anc_atts' =>[],
-  *   ],
-  * ]
-  * @param wrapper is the div wrapper to put the menu in
-  * @param list_attr is an array of attributes the list will have
+  * @param list is a complex array of list items and links
+  * $list = array(
+  *        'item_n' => array(
+  *             'list_item_class' => '',
+  *             'link_class' => '',
+  *             'link_value' => '',
+  *             'link_atts' => array()
+  *         )
+  *         ...
+  * );
+  * @param wrapper is the wrapper to put the menu in
   * @param custom is any custom list items that we want ot include in the list
   */
-  public function make_menu($links = array(), $wrapper = array(), $list_attr = array(), $custom) {
+  public function make_menu($list = array(), $list_common = array(), $list_atts = array(), $wrapper = array(), $custom) {
+
     $html = isset($custom) ? $custom : '';
-    foreach($links as $link) {
-      $html .= '<li ';
-      $html .= !empty($list['line_atts']) ? Utilities::add_attributes($list['line_atts']) : '';
-      $html .= '><a href="' . $link['value'] . '" ';
-      $html .= !empty($list['anc_atts']) ? Utilities::add_attributes($list['anc_atts']) : '';
-      $html .= '>' . $list['url'] . '</a></li>';
+    $html .= '<ul ' . Utilities::add_attributes($list_atts) . '>';
 
-    }
-    if (!empty($list_attr)) {
-      $html = '<ul ' . Utilities::add_attributes($list_attr) . '>' . $html . '</ul>';
-    } else {
-      $html = '<ul>' . $html . '</ul>';
+    foreach($list as $v) {
+      $html .= '<li class="' . $list_common['list_item_class'] . '">';
+      $html .= '<a class="' . $list_common['link_class'] .'" ';
+      $html .= Utilities::add_attributes($v['link_atts']) . '>';
+      $html .= $v['link_value'] . '</a></li>'  . "\n";
     }
 
-    return  !empty($wrapper) ? Utilities::make_div($html, $wrapper) : $html;
+    $html .= '</ul>';
 
+    foreach ($wrapper as $w) {
+        $html = Utilities::add_tags($w['tag'], $html, $w['atts']);
+    }
+
+    return $html;
   }
 
-  public function make_navbar($menu, $class, $preCustom = null, $postCustom = null, $div, $attr_ar = array()) {
-    $atts .= !empty($attr_ar) ? Utilities::add_attributes($attr_ar) . '>' : '>';
-    $html = $preCustom ? $prCustom . $menu : $menu;
-    $html .= $postCustom ? $html . $postCustom : '';
-    $html = !empty($div) ? Utilities::make_div($html, $div) : '';
-    $html = '<nav class="' . $class . '"' . $atts . $html . '</nav>';
+  public function make_navbar($menu, $class, $div, $preCustom = null, $postCustom = null, $attr_ar = array()) {
+    $atts = !empty($attr_ar) ? Utilities::add_attributes($attr_ar) : '';
+
+    $html = '<nav class="' . $class . '"' . $atts . '>';
+    $m = $preCustom ? $preCustom . $menu : $menu;
+    $m .= $postCustom ? $postCustom : '';
+    $html.= !empty($div) ? Utilities::add_tags('div', $m, $div) : $m;
+    $html .= '</nav>';
 
     return $html;
   }

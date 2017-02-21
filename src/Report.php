@@ -18,7 +18,7 @@ class Report {
     * @param vals is an array of values from the form.
     * @param resolved is the resolution state of the ticket. Default unresolved.
     */
-    public function recordReport($vals, $resolved = "unresolved") {
+    public function record_report($vals, $resolved = "unresolved") {
         $conn = $this->conn;
         try {
             $stmt = $conn->prepare("INSERT INTO reports (netid, message, topic, urgency, status) values (:netid, :message, :topic, :urgency, :status);");
