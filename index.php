@@ -1,7 +1,7 @@
 <?php
 require('sec/config.php');
 
-$_SERVER = array("REMOTE_USER" => "medinad");
+$_SERVER = array("REMOTE_USER" => "bobby");
 
 function class_autoloader($class_name) {
   require(WEB_ROOT . 'src/' . $class_name . '.php');
@@ -40,7 +40,6 @@ $meta = array(
   )
 );
 $header = $page->make_head('Helpdesk', 'en', 'utf-8', $styles, $scripts, $meta);
-
 $page->render($header);
 
 $nav = new Navigation();
@@ -83,7 +82,7 @@ $preCustom = '
         <a class="navbar-brand" href="/">Helpdesk @ UW English</a>
     </div>';
 $div = array(
-    'class' => 'container-fluid'
+    'class' => 'container'
 );
 $navigation = $nav->make_navbar($menu, 'navbar navbar-light', $div, null, $preCustom);
 
@@ -104,16 +103,17 @@ $wrappers = array(
 $start_body = $page->start_body($navigation, $wrappers);
 $page->render($start_body);
 
-if(isset($_POST)) {
+if($_POST['submit']) {
     $con = new Connect();
     $con = $con->connect();
     $report = new Report($con);
     $report->record_report($_POST);
+    $con = null;
 }
 
 $form = new Form();
 $a = array(
-    'action' => '/',
+    'action' => '',
     'method' => 'post',
     'id' => 'main_form',
 );
@@ -173,6 +173,7 @@ $ticket .= $form->add_field_set($fields, $a, 'Urgency');
 
 $a = array(
     'type' => 'submit',
+    'name' => 'submit',
     'id' => 'submit_button',
     'class' => 'btn btn-info btn-lg',
     'value' => 'Submit'
@@ -216,3 +217,50 @@ $content = '
 
 $html = $page->create_part($content, ['class' => 'col-md-4 aside']);
 $page->render($html . '</div><!-- end row -->');
+
+// Get Results from db.
+$con = new Connect();
+$con = $con->connect();
+$r = new Retrieve($con);
+$results = $r->user_retrieve();
+
+if (isset($results)) {
+    // Create the table
+    $table = new Table();
+    $t = $table->display_results($results);
+    $a = array(
+        'id' => 'resultsTable',
+        'class' => ''
+    );
+    $html = $page->create_part($t, $a);
+    $page->render($html);
+}
+
+$foot = '<p class="text-center"> UW English Department &copy; ' . date( Y ) . '</p>';
+$foot = $page->create_part($foot, ['class' => 'container']);
+
+$scripts = array(
+    ['src' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js
+https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js
+https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js',
+'integrity' => 'sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY
+sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB
+VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU',
+'crossorigin' => 'anonymous'],
+    ['src' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js
+https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js
+https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js',
+'integrity' => 'sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY
+sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB
+VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU',
+'crossorigin' => 'anonymous'],
+    ['src' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js
+https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js
+https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js',
+'integrity' => 'sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY
+sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB
+VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU',
+'crossorigin' => 'anonymous']
+);
+$html = $page->end_page($foot, $scripts);
+$page->render($html);

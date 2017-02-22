@@ -125,10 +125,11 @@ class Page {
   * @param scripts is an array of scripts to be included
   * @return html string to be rendered
   */
-  function end_page($foot_content, $scripts) {
+  function end_page($foot_content, $scripts = array()) {
     $html = '';
-    if ($wrapperCount > 0 ) {
-      for ($i = 0; $i < $wrapperCount; $i++) {
+    $w = $this->wrapperCount;
+    if ($w > 0 ) {
+      for ($i = 0; $i < $w; $i++) {
         $html .= '</div>';
       }
     }
@@ -138,12 +139,11 @@ class Page {
     if (isset($scripts)) {
       foreach($scripts as $script) {
         $html .= '<script ';
-        foreach($script as $k=>$v) {
-          $html .= $k . '="' . $v . '" ';
-        }
+        $html .= Utilities::add_attributes($script);
         $html .= '></script>';
       }
     }
+    $html .= '</body></html>';
 
     return $html;
   }

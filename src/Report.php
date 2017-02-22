@@ -22,11 +22,11 @@ class Report {
         $conn = $this->conn;
         try {
             $stmt = $conn->prepare("INSERT INTO reports (netid, message, topic, urgency, status) values (:netid, :message, :topic, :urgency, :status);");
-            $stmt->bindParam(':netid', $this->id, PDO::PARAM_STR);
+            $stmt->bindParam(':netid', $this->user, PDO::PARAM_STR);
             $stmt->bindParam(':message', $vals['message'], PDO::PARAM_STR);
             $stmt->bindParam(':topic', $vals['topic'], PDO::PARAM_STR);
             $stmt->bindParam(':urgency', $vals['urgency'], PDO::PARAM_STR);
-            $stmt->bindParam(':status', $resolve, PDO::PARAM_STR);
+            $stmt->bindParam(':status', $resolved, PDO::PARAM_STR);
             $stmt->execute();
             // would be good to flash a success message here.
         } catch (Exception $e) {

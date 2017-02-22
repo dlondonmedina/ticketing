@@ -21,7 +21,6 @@ class Retrieve {
     */
     public function admin_retrieve($target = null) {
         // define db connection
-        $conn = $this->conn;
         if(!in_array($this->user, ADMIN_USERS)) {
             header(TEMPLATES . 'access-denied.html');
         } else {
@@ -33,23 +32,31 @@ class Retrieve {
     /**
     *
     * Get list of users who have submitted tickets.
-    * @param all_users sets whether to get users with open tickets or all users.
+    * @param all_users sets whether to get users with open tickets
+    * or all users.
     * @return users associative array of users from table.
     */
     public function get_users($all_users = true) {
-        // define db connection
-        $conn = $this->conn;
-        if($all_users) {
-            $stmt = $conn->prepare("SELECT DISTINCT netid FROM reports");
+        if (!in_array($this->user, ADMIN_USERS)) {
+            header(TEMPLATES . 'access-denied.html');
         } else {
-            $unresolved = "unresolved";
-            $stmt = $conn->prepare("SELECT DISTINCT netid FROM reports where status=:status");
+            // define db connection
+            $conn = $this->conn;
+            if($all_users) {
+                $stmt = $conn->prepare("SELECT DISTINCT netid FROM reports");
+            } else {
+                $unresolved = "unresolved";
+                $stmt = $conn->prepare(
+                "SELECT DISTINCT netid FROM reports where status=:status"
+            );
             $stmt->bindParam(":status", $unresolved, PDO::PARAM_STR);
         }
         $stmt->execute();
         $out = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
         return $out;
+
+        }
     }
 
     /**
@@ -57,13 +64,18 @@ class Retrieve {
     * @return results from db query
     */
     public function user_retrieve() {
-        $conn = $this->conn;
-        if(!in_array($this->user, REG_USERS) || !isset($this->user)) {
-            header(TEMPLATES . 'access-denied.html');
-        } else {
+
+        if (!isset($this->user)) {
+            header(TEMPLATES . 'login.html');
+        } elseif (in_array($this->user, ADMIN_USERS)) {
+            $out = $this->admin_retrieve();
+        } elseif (in_array($this->user, REG_USERS)) {
             $out = $this->get_results($this->user);
-            return $out;
+        } else {
+            header(TEMPLATES . 'access-denied.html');
         }
+
+        return $out;
 
     }
 
@@ -76,7 +88,7 @@ class Retrieve {
     private function get_results($target = null) {
         //define db connection
         $conn = $this->conn;
-        if ( $target == null ) {
+        if (!$target) {
             $stmt = $conn->prepare("SELECT * FROM reports");
         } else {
             $stmt = $conn->prepare("SELECT * FROM reports where netid=:netid");

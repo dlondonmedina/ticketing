@@ -5,12 +5,6 @@
 */
 class Table
 {
-    public $results;
-
-    public function __construct($results) {
-            $this->results = $results;
-    }
-
 
     /**
     * Create results table with results array keys as headings.
@@ -24,14 +18,14 @@ class Table
         foreach ($headings as $heading) {
             $str .= '<th>' . $heading . '</th>';
         }
-        $str .= '</tr></thead><tbody>';
+        $str .= '</tr></thead>' . "\n" .'<tbody>';
 
         foreach ($results as $row) {
             $str .= '<tr class="'. $row['status'] . '">';
             foreach ($row as $v) {
                 $str .= '<td>' . $v . '</td>';
             }
-            $str .= '</tr>';
+            $str .= '</tr>' . "\n";
         }
         $str .= '</tbody></table>';
 
@@ -59,13 +53,13 @@ class Table
     */
     public function display_admin($results) {
         $str = '<table id="myTable" class="table table-striped">
-            <thead><tr><th></th></tr>';
+            <thead><tr><th></th></tr>' . "\n";
 
         $headings = array_keys($results[0]);
         foreach ($headings as $heading) {
             $str .= '<th>' . $heading .'</th>';
         }
-        $str .= '</tr></thead><tbody>';
+        $str .= '</tr></thead>' . "\n" . '<tbody>';
 
         foreach ($results as $row) {
             if($row['status'] === 'unresolved') {
@@ -81,7 +75,7 @@ class Table
                 $str .= '<td>' . $v . '</td>';
             }
 
-            $str .= '</tr>';
+            $str .= '</tr>' . "\n";
         }
 
         $str .= '</tbody></table>';
@@ -89,5 +83,5 @@ class Table
         return $str;
 
     }
-    
+
 }

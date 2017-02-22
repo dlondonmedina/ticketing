@@ -16,7 +16,7 @@
         if (!empty($attr_ar)) {
             $str .= Utilities::add_attributes( $attr_ar );
         } else {
-            $str .= 'action="/" method="post" id="new_form"';
+            $str .= 'action="" method="post" id="new_form"';
         }
         $str .= '>' . "\n";
 
@@ -86,7 +86,7 @@
     function add_field_set($fields = array(), $attr_ar = array(),
                         $legend = null ) {
         $str = '<fieldset ';
-        $str .= !empty($attr_ar) ? Utilities::add_attributes($attr_ar) : '>';
+        $str .= !empty($attr_ar) ? Utilities::add_attributes($attr_ar) . '>' : '>';
         $str .= isset($legend) ? '<legend>' . $legend . '</legend>' : '';
 
         foreach ($fields as $field) {
