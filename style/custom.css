@@ -1,0 +1,53 @@
+/* Custom Styles */
+
+@media screen and (min-width: 1201px) {
+    .not-found {
+        font-size: 40px;
+    }
+
+    .not-found-text {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+    .not-found {
+        font-size: 30px;
+    }
+
+    .not-found-text {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .not-found {
+        font-size: 20px;
+    }
+
+    .not-found-text {
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .not-found {
+        font-size: 16px;
+    }
+
+    .not-found-text {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .not-found {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .not-found {
+        font-size: 14px;
+    }
+}

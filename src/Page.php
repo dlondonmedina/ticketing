@@ -58,7 +58,7 @@ class Page {
 
     if (isset($styles)) {
       foreach($styles as $style) {
-        $html .= '<link rel="stylesheet" ';
+        $html .= '<link rel="stylesheet" type="text/css" ';
         $html .= Utilities::add_attributes($style) . '>' . "\n";
       }
     }

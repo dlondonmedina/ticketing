@@ -22,7 +22,7 @@ class Retrieve {
     public function admin_retrieve($target = null) {
         // define db connection
         if(!in_array($this->user, ADMIN_USERS)) {
-            header(TEMPLATES . 'access-denied.html');
+            header('404.php');
         } else {
             $out= $this->get_results($target);
             return $out;
@@ -38,7 +38,7 @@ class Retrieve {
     */
     public function get_users($all_users = true) {
         if (!in_array($this->user, ADMIN_USERS)) {
-            header(TEMPLATES . 'access-denied.html');
+            header('404.php');
         } else {
             // define db connection
             $conn = $this->conn;
@@ -72,7 +72,7 @@ class Retrieve {
         } elseif (in_array($this->user, REG_USERS)) {
             $out = $this->get_results($this->user);
         } else {
-            header(TEMPLATES . 'access-denied.html');
+            header('404.php');;
         }
 
         return $out;
