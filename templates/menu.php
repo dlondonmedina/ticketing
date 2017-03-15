@@ -1,4 +1,4 @@
-<?php 
+<?php
 $nav = new Navigation();
 $list_a = array(
     'class' => 'nav navbar-nav navbar-right',
@@ -48,12 +48,6 @@ $wrappers = array(
         'tag' => 'div',
         'attributes' => array(
             'class' => 'container',
-        )
-    ),
-    'second' => array(
-        'tag' => 'div',
-        'attributes' => array(
-            'class' => 'row'
         )
     )
 );

@@ -1,7 +1,5 @@
 <?php
 
-$_SERVER = array("REMOTE_USER" => "medinad");
-
 function class_autoloader($class_name) {
   require(WEB_ROOT . 'src/' . $class_name . '.php');
 }
@@ -21,9 +19,7 @@ $styles = array(
 );
 $scripts = array(
     'one' => array(
-        'src' => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
-        'integrity' => 'sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa',
-        'crossorigin' => 'anonymous',
+        'src' => '/js/main.js'
     )
 );
 

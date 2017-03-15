@@ -53,7 +53,7 @@ class Table
     */
     public function display_admin($results) {
         $str = '<table id="myTable" class="table table-striped">
-            <thead><tr><th></th></tr>' . "\n";
+            <thead>';
 
         $headings = array_keys($results[0]);
         foreach ($headings as $heading) {
@@ -64,8 +64,8 @@ class Table
         foreach ($results as $row) {
             if($row['status'] === 'unresolved') {
                 $str .= '
-                    <tr onclick="displayModal(' . $result['id'] . ')" id="ticket_'
-                    . $result['id'] . '" class="table-row click-me" data-toggle="modal"
+                    <tr onclick="fillModal(' . $row['id'] . ')" id="ticket_'
+                    . $row['id'] . '" class="table-row click-me" data-toggle="modal"
                     data-target="#myModal">';
             } else {
                 $str .= '<tr class="table-row">';

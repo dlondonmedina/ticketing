@@ -51,3 +51,14 @@
         font-size: 14px;
     }
 }
+
+.click-me {
+    cursor: pointer;
+}
+
+.message {
+    white-space: nowrap;
+    max-width: 20em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

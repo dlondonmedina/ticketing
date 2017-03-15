@@ -40,13 +40,12 @@ class Report {
     * @param vals is an array of resolution info.
     * vals = (resolved=>'', 'ticket'=>'ticket_id', 'note'=> '')
     */
-    public function resolveTicket($vals) {
+    public function resolve_ticket($vals) {
         $conn = $this->conn;
-        if (in_array($this->id, ADMIN_USERS)) {
+        if (in_array($this->user, ADMIN_USERS)) {
             if(isset($vals['resolved'])) {
                 $res = date('m/d/y @ h:m');
-                $stmt = $conn->prepare('UPDATE reports SET status=REPLACE(status, "unresolved", :res) WHERE id=:id' );
-                $stmt->bindParam(':res', $res, PDO::PARAM_STR);
+                $stmt = $conn->prepare('UPDATE reports SET status=REPLACE(status, "unresolved", "resolved") WHERE id=:id' );
                 $stmt->bindParam(':id', $vals['ticket'], PDO::PARAM_INT);
                 $stmt->execute();
             }

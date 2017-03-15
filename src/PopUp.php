@@ -28,9 +28,9 @@ class PopUp {
     * @param buttons are specialized buttons
     *
     */
-    public function modal_popup($title, $body, $header, $id = 'myModal', $form = null, $buttons = null) {
-        $str = '<div id="' . $id . '" class="modal fade">
-                    <div class="modal-dialog" role="document">
+    public function modal_popup($title, $body, $form, $id = 'myModal', $header) {
+        $str = '<div id="' . $id . '" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
                         <div class="modal-content">';
         if (isset($header)) {
             $str .= $header;
@@ -49,17 +49,17 @@ class PopUp {
         $str .= isset($form) ? $form : '';
         $str .= '</div>';
 
-        $str .= '<div class="modal-footer">';
-        if (isset($buttons)) {
-            $str .= $buttons;
-        } else {
-            // generic buttons here
-            $str .= '<button type="button" class="btn btn-primary">
-                        Save changes
-                    </button>
-                    <button type="button" class="btn btn-secondary"
-                    data-dismiss="modal">Close</button>';
-        }
+        $str .= '<div class="modal-footer"><button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close</button>';
+        // if (isset($buttons) && $buttons != "none") {
+        //     $str .= $buttons;
+        // } elseif ($buttons == "none") {
+        //     $str .= '';
+        // } else {
+        //     // generic buttons here
+        //     $str .= '<button type="button" class="btn btn-secondary"
+        //             data-dismiss="modal">Close</button>';
+        // }
         $str .= '</div>';
         $str .= '</div></div></div>';
 
