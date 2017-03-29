@@ -27,7 +27,7 @@ class Navigation {
     foreach($list as $v) {
       $html .= '<li class="' . $list_common['list_item_class'] . '">';
       $html .= '<a class="' . $list_common['link_class'] .'" ';
-      $html .= Utilities::add_attributes($v['link_atts']) . '>';
+      $html .= Utilities::add_attributes($v['atts']) . '>';
       $html .= $v['link_value'] . '</a></li>'  . "\n";
     }
 

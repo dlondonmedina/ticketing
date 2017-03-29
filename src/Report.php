@@ -17,6 +17,7 @@ class Report {
     * Create a new report in the databases.
     * @param vals is an array of values from the form.
     * @param resolved is the resolution state of the ticket. Default unresolved.
+    * @return success of recording ticket.
     */
     public function record_report($vals, $resolved = "unresolved") {
         $conn = $this->conn;
@@ -28,11 +29,62 @@ class Report {
             $stmt->bindParam(':urgency', $vals['urgency'], PDO::PARAM_STR);
             $stmt->bindParam(':status', $resolved, PDO::PARAM_STR);
             $stmt->execute();
-            // would be good to flash a success message here.
+            $info = array(
+                'user' => $this->user,
+                'message' => $vals['message'],
+                'topic' => $vals['topic'],
+                'urgency' => $vals['urgency'],
+            );
+            $this->email_report($info);
         } catch (Exception $e) {
             echo "Failed to save message with error: " . $e->getMessage();
             die();
         }
+    }
+
+    /**
+    * Send email of new report to tech staff.
+    * @param array info for email.
+    */
+    private function email_report($info = array()) {
+        $to = '';
+        for ($i = 0; $i < count(ADMIN_USERS); $i++) {
+            $to .= ADMIN_USERS[$i] . '@uw.edu, ';
+        }
+        $to .= ADMIN_USERS[count(ADMIN_USERS) - 1] . '@uw.edu';
+
+        $subject = 'Urgency[' . $info['urgency'] . '] ' . $info['topic'];
+        $message = '
+        <html>
+        <head>
+            <title>Helpdesk Message from ' . $info['user'] . '</title>
+        </head>
+        <body>
+            <p>
+            Dear IT Team,
+
+            I hope you\'re having a wonderful day! I\'m having an issue with ' .
+            $info['topic'] . ' and I would love it if you could help me at your
+            nearest convenience.
+            </p>
+            <p>
+                '. $info['message'] .'
+            </p>
+        </body>
+        </html>';
+
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html, charset=iso-8859-1';
+        $headers[] = 'To: ' . $to;
+        $headers[] = 'From: ' . $info['user'] . '@uw.edu';
+
+        // Mail it
+        try {
+            mail($to, $subject, $message, implode("\r\n", $headers));
+        } catch (Exception $e) {
+            echo "I'm sorry, that didn't work. Failed with Error: " . $e->getMessage();
+        }
+
     }
 
     /**

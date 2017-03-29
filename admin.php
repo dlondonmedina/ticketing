@@ -53,13 +53,20 @@ $con = new Connect();
 $con = $con->connect();
 $r = new Retrieve($con);
 $results = $r->admin_retrieve();
-if (isset($results)) {
+if (!empty($results)) {
     $table = new Table();
     $html = $table->display_admin($results);
-
-    $page->render($html);
+} else {
+    $html = '
+    <div>
+        <img src="img/cardimg.png" class="img-responsive center-block" max-width="500px" alt="cute cat">
+        <p>
+        <h1>Woohoo! There\'s nothing here! You\'ll never actually see this page.</h1>
+        </p>
+    </div>';
 }
 
+$page->render($html);
 
 $html = '<script type="text/javascript">
     function fillModal(sel) {

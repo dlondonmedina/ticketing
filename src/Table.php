@@ -13,7 +13,7 @@ class Table
     */
     public function display_results($results){
 
-        $str = '<table class="table table-striped"><thead><tr><th></th>';
+        $str = '<table class="table table-striped table-hover"><thead><tr>';
         $headings = array_keys($results[0]);
         foreach ($headings as $heading) {
             $str .= '<th>' . $heading . '</th>';
@@ -21,7 +21,7 @@ class Table
         $str .= '</tr></thead>' . "\n" .'<tbody>';
 
         foreach ($results as $row) {
-            $str .= '<tr class="'. $row['status'] . '">';
+            $str .= '<tr class="'. $row['status'] . ' collapse in">';
             foreach ($row as $v) {
                 $str .= '<td>' . $v . '</td>';
             }
@@ -65,10 +65,11 @@ class Table
             if($row['status'] === 'unresolved') {
                 $str .= '
                     <tr onclick="fillModal(' . $row['id'] . ')" id="ticket_'
-                    . $row['id'] . '" class="table-row click-me" data-toggle="modal"
+                    . $row['id'] . '" class="table-row click-me ' . $row['status'] .
+                    ' collapse in" data-toggle="modal"
                     data-target="#myModal">';
             } else {
-                $str .= '<tr class="table-row">';
+                $str .= '<tr class="table-row ' . $row['status'] . ' collapse in">';
             }
 
             foreach ($row as $v) {

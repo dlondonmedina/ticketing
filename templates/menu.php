@@ -11,23 +11,26 @@ $list_common = array(
 $list = array(
     'item_zero' => array(
         'link_value' => 'New Ticket',
-        'link_a' => array(
-            'href' => '/',
-            'data-toggle' => 'collapse'
+        'atts' => array(
+            'href' => '/'
         )
     ),
-    'item_one' => array(
-        'link_value' => 'All Tickets',
-        'link_a' => array(
-            'href' => '#allTable',
-            'data-toggle' => 'collapse'
-        )
-    ),
+    // 'item_one' => array(
+    //     'link_value' => 'All Tickets',
+    //     'atts' => array(
+    //         'href' => '#allTable',
+    //         'data-toggle' => 'collapse',
+    //         'data-target' => '.tableRows'
+    //     )
+    // ),
     'item_two' => array(
         'link_value' => 'Open Tickets',
-        'link_a' => array(
-            'href' => '#openTable',
-            'data-toggle' => 'collapse'
+        'atts' => array(
+            'id' => 'toggle_table',
+            'href' => '',
+            'onclick' => 'accordionTable()',
+            'data-toggle' => 'collapse',
+            'data-target' => '.resolved'
         )
     )
 );
