@@ -37,5 +37,5 @@ $meta = array(
       'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no'
   )
 );
-$header = $page->make_head('Helpdesk', 'en', 'utf-8', $styles, $scripts, $meta);
+$header = $page->make_head(SITE_NAME, 'en', 'utf-8', $styles, $scripts, $meta);
 $page->render($header);

@@ -1,8 +1,11 @@
 <?php
 require('sec/config.php');
-
-require(TEMPLATES . 'header.php');
-require(TEMPLATES . 'menu.php');
+if (TEMPLATES) {
+    require(TEMPLATES . 'header.php');
+    require(TEMPLATES . 'menu.php');
+} else {
+    header('install.php');
+}
 
 if(isset($_POST)) {
     $conn = new Connect();

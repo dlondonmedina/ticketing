@@ -36,11 +36,11 @@ class PopUp {
             $str .= $header;
         } else {
             $str .= '<div class="modal-header">
-                        <h5 class="modal-title">' . $title . '</h5>
                         <button type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
                         </button>
+                            <h3 class="modal-title">' . $title . '</h3>
                     </div>';
         }
 
@@ -49,18 +49,9 @@ class PopUp {
         $str .= isset($form) ? $form : '';
         $str .= '</div>';
 
-        $str .= '<div class="modal-footer"><button type="button" class="btn btn-secondary"
-                data-dismiss="modal">Close</button>';
-        // if (isset($buttons) && $buttons != "none") {
-        //     $str .= $buttons;
-        // } elseif ($buttons == "none") {
-        //     $str .= '';
-        // } else {
-        //     // generic buttons here
-        //     $str .= '<button type="button" class="btn btn-secondary"
-        //             data-dismiss="modal">Close</button>';
-        // }
-        $str .= '</div>';
+        // $str .= '<div class="modal-footer"><button type="button" class="btn btn-secondary"
+        //         data-dismiss="modal">Close</button>';
+        // $str .= '</div>';
         $str .= '</div></div></div>';
 
         return $str;

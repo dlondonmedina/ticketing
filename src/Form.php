@@ -51,6 +51,12 @@
         return $str;
     }
 
+    function add_generic( $attr_ar = array()) {
+        $str = '<input ';
+        $str .= isset($attr_ar) ? Utilities::add_attributes($attr_ar) . '>' : '>';
+        return $str;
+    }
+    
     /**
     * Add text area to form.
     * @param rows default is 4
