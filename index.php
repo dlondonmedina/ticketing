@@ -1,11 +1,13 @@
 <?php
-require('sec/config.php');
-if (TEMPLATES) {
-    require(TEMPLATES . 'header.php');
-    require(TEMPLATES . 'menu.php');
-} else {
+try {
+    require('sec/config.php');
+} catch (Exception $e) {
     header('install.php');
 }
+
+require(TEMPLATES . 'header.php');
+require(TEMPLATES . 'menu.php');
+
 
 if($_POST['submit']) {
     $con = new Connect();
