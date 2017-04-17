@@ -21,9 +21,9 @@ class Connect {
    * )
    *
    */
-   public function __construct($credentials) {
+   public function __construct($credentials = null) {
      // Check for alternate db credentials array
-     if (isset($credentials)) {
+     if (!empty($credentials)) {
        $this->host = $credentials['mysql_host'];
        $this->db = $credentials['mysql_database'];
        $this->uname = $credentials['mysql_username'];
@@ -53,9 +53,11 @@ class Connect {
 
        } catch (PDOException $ex) {
           echo "Connection failed!";
-          echo "<br />Error message: " . getMessage($ex);
+          echo "<br />Error message: " . $ex->getMessage();
           die();
-       }
+      } catch (Exception $e) {
+          echo "General Error: " . $e->getMessage();
+      }
      }
      return $this->connection;
    }

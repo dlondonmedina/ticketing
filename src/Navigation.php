@@ -19,7 +19,7 @@ class Navigation {
   * @param wrapper is the wrapper to put the menu in
   * @param custom is any custom list items that we want ot include in the list
   */
-  public function make_menu($list = array(), $list_common = array(), $list_atts = array(), $wrapper = array(), $custom) {
+  public function make_menu($list = array(), $list_common = array(), $list_atts = array(), $wrapper = array(), $custom = Null) {
 
     $html = isset($custom) ? $custom : '';
     $html .= '<ul ' . Utilities::add_attributes($list_atts) . '>';
