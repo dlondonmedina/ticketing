@@ -48,10 +48,11 @@ class Report {
     */
     private function email_report($info = array()) {
         $to = '';
-        for ($i = 0; $i < count(ADMIN_USERS); $i++) {
-            $to .= ADMIN_USERS[$i] . '@uw.edu, ';
+        foreach ( ADMIN_USERS as $admin ) {
+            $to .= $admin . '@uw.edu, ';
         }
-        $to .= ADMIN_USERS[count(ADMIN_USERS) - 1] . '@uw.edu';
+        // remove final comma and space 
+        $to = substr($to, 0, -2);
 
         $subject = 'Urgency[' . $info['urgency'] . '] ' . $info['topic'];
         $message = '

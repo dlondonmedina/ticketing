@@ -28,7 +28,7 @@ class PopUp {
     * @param buttons are specialized buttons
     *
     */
-    public function modal_popup($title, $body, $form, $id = 'myModal', $header) {
+    public function modal_popup($title, $body, $form, $id = 'myModal', $header = null) {
         $str = '<div id="' . $id . '" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">';
