@@ -1,11 +1,11 @@
 <?php
 $nav = new Navigation();
 $list_a = array(
-    'class' => 'nav navbar-nav navbar-right',
-    'id' => 'my new list',
+    'class' => 'nav navbar-nav',
+    'id' => 'mynewlist',
 );
 $list_common = array(
-    'list_item_class' => 'nav-item',
+    'list_item_class' => 'dropdown',
     'link_class' => 'nav-link',
 );
 $list = array(
@@ -36,15 +36,19 @@ $list = array(
 );
 
 $menu = $nav->make_menu($list, $list_common, $list_a);
-
-$preCustom = '
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/">Helpdesk @ UW English</a>
-    </div>';
-$div = array(
-    'class' => 'container'
+// $preCustom = '
+//     <div class="navbar-header">
+//         <a class="navbar-brand" href="/">Helpdesk @ UW English</a>
+//     </div>';
+// $div = array(
+//     'class' => 'container'
+// );
+$a = array(
+    'class' => 'navbar-header'
 );
-$navigation = $nav->make_navbar($menu, 'navbar navbar-light', $div, null, $preCustom);
+$menu = Utilities::add_tags('div', $menu, ['class' => 'navbar-header']);
+$menu = Utilities::add_tags('div', $menu, ['class' => 'container']);
+$navigation = $nav->make_navbar($menu, 'navbar', 'navbar navbar-default');
 
 $wrappers = array(
     'first' => array(

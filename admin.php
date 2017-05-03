@@ -2,7 +2,7 @@
 try {
     require('sec/config.php');
 } catch (Exception $e) {
-    header('install.php');
+    header('Location: install.php');
 }
 
 require(TEMPLATES . 'header.php');

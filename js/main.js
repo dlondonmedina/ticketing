@@ -16,3 +16,12 @@ function accordionTable () {
         node.innerHTML = 'Open Tickets';
     }
 }
+
+function publicationForm (radio) {
+    var standAlone = ['book', 'edited_collection', 'edition'];
+    if (standAlone.indexOf(radio.value) === -1) {
+        document.getElementById('publication').style.display = 'block';
+    } else {
+        document.getElementById('publication').style.display = 'none';
+    }
+}

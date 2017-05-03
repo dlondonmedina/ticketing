@@ -51,7 +51,7 @@ class Report {
         foreach ( ADMIN_USERS as $admin ) {
             $to .= $admin . '@uw.edu, ';
         }
-        // remove final comma and space 
+        // remove final comma and space
         $to = substr($to, 0, -2);
 
         $subject = 'Urgency[' . $info['urgency'] . '] ' . $info['topic'];
@@ -111,6 +111,48 @@ class Report {
             }
         } else {
             echo "You are not allowed to do this!";
+            die();
+        }
+    }
+
+    /**
+    * Reports an event.
+    * @param vals is the array of values from the form
+    */
+    public function record_event($vals) {
+        $conn = $this->conn;
+        try {
+
+        } catch (PDOException $e) {
+            echo "Failed to save event with error: " . $e->getMessage();
+            die();
+        } catch (Exception $e) {
+            echo "Something else went wrong with error: " . $e->getMessage();
+            die();
+        }
+    }
+
+    /**
+    *
+    * Report a publication
+    * @param vals is an array of values from the form
+    */
+    public function record_publication($vals) {
+        $con = $this->conn;
+        try {
+            $stmt = $conn->prepare("INSERT INTO publications (netid, title, journal, pub_date, type) VALUES (:title, :journal, :pub_date, :type);");
+            $stmt->bindParam(':netid', $this->user, PDO::PARAM_STR);
+            $stmt->bindParam(':title', $vals['title'], PDO::PARAM_STR);
+            $stmt->bindParam(':journal', $vals['publication'], PDO::PARAM_STR);
+            $stmt->bindParam(':pub_date', $vals['pub_date'], PDO::PARAM_STR);
+            $stmt->bindParam(':type', $vals['type'], PDO::PARAM_STR);
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo "Failed to save event with error: " . $e->getMessage();
+            die();
+        } catch (Exception $e) {
+            echo "Something else went wrong with error: " . $e->getMessage();
             die();
         }
     }

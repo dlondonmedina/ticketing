@@ -14,12 +14,15 @@ $styles = array(
         'crossorigin' => 'anonymous',
     ),
     'two' => array(
-        'href' => '../style/custom.css',
+        'href' => 'style/custom.css',
+    ),
+    'three' => array(
+        'href' => 'style/base.css',
     )
 );
 $scripts = array(
     'one' => array(
-        'src' => '/js/main.js'
+        'src' => 'js/main.js'
     )
 );
 
@@ -39,3 +42,6 @@ $meta = array(
 );
 $header = $page->make_head(SITE_NAME, 'en', 'utf-8', $styles, $scripts, $meta);
 $page->render($header);
+
+// Add Masthead
+include('masthead.php');

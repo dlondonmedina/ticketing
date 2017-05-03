@@ -40,13 +40,12 @@ class Navigation {
     return $html;
   }
 
-  public function make_navbar($menu, $class, $div, $preCustom = null, $postCustom = null, $attr_ar = array()) {
+  public function make_navbar($menu, $id, $class, $preCustom = null, $postCustom = null, $attr_ar = array()) {
     $atts = !empty($attr_ar) ? Utilities::add_attributes($attr_ar) : '';
 
-    $html = '<nav class="' . $class . '"' . $atts . '>';
-    $m = $preCustom ? $preCustom . $menu : $menu;
-    $m .= $postCustom ? $postCustom : '';
-    $html.= !empty($div) ? Utilities::add_tags('div', $m, $div) : $m;
+    $html = '<nav id="' . $id . '" class="' . $class . '"' . $atts . '>';
+    $html .= $preCustom ? $preCustom . $menu : $menu;
+    $html .= $postCustom ? $postCustom : '';
     $html .= '</nav>';
 
     return $html;

@@ -27,7 +27,7 @@
 
     /**
     * Add label to a form field.
-    * @param name is the fame of the label
+    * @param name is the name of the label
     * @param value is the text value of the label.
     */
     function add_label($name, $value) {
@@ -56,7 +56,7 @@
         $str .= isset($attr_ar) ? Utilities::add_attributes($attr_ar) . '>' : '>';
         return $str;
     }
-    
+
     /**
     * Add text area to form.
     * @param rows default is 4
@@ -93,14 +93,14 @@
                         $legend = null ) {
         $str = '<fieldset ';
         $str .= !empty($attr_ar) ? Utilities::add_attributes($attr_ar) . '>' : '>';
-        $str .= isset($legend) ? '<legend>' . $legend . '</legend>' : '';
+        $str .= isset($legend) ? '<legend>' . $legend . '</legend><br />' : '';
 
         foreach ($fields as $field) {
             $in = $this->add_input($field['type'], $field['value'], $field['attributes']);
             $in .= isset($field['text']) ? $field['text'] : '';
-            $in = isset($field['label']) ? $this->add_label($field['label'], $in) : $in;
+            $in = isset($field['label']) ? $this->add_label($field['label'], $field['label_val']) . $in : $in;
 
-            $str .= isset($field['div_atts']) ? Utilities::add_tags('div', $in, $field['div_atts']) : '';
+            $str .= isset($field['div_atts']) ? Utilities::add_tags('div', $in, $field['div_atts']) : $in;
         }
 
         $str .= '</fieldset>';

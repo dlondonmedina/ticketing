@@ -2,7 +2,7 @@
 try {
     require('sec/config.php');
 } catch (Exception $e) {
-    header('install.php');
+    header('Location: install.php');
 }
 
 require(TEMPLATES . 'header.php');
@@ -139,6 +139,7 @@ if (isset($results)) {
         'class' => ''
     );
     $html = $page->create_part($t, $a);
+    $html = Utilities::add_tags('div', $html, ['class' => 'container']);
     $page->render($html);
 }
 
