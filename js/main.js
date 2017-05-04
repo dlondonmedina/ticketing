@@ -17,11 +17,41 @@ function accordionTable () {
     }
 }
 
+function toggleNode (hnodes, snodes) {
+    hnodes.forEach(function(entry) {
+        document.getElementById(entry).style.display = 'none';
+    });
+    snodes.forEach(function(entry) {
+        document.getElementById(entry).style.display = 'block';
+    });
+
+}
+
 function publicationForm (radio) {
-    var standAlone = ['book', 'edited_collection', 'edition'];
-    if (standAlone.indexOf(radio.value) === -1) {
-        document.getElementById('publication').style.display = 'block';
-    } else {
-        document.getElementById('publication').style.display = 'none';
+    switch(radio.value) {
+        case 'book':
+        case 'edited_collection':
+            var hide = ['publication', 'edition', 'volume', 'number', 'pages'];
+            var show = ['title', 'pub_date'];
+            break;
+        case 'edition':
+            var hide = ['publication', 'volume', 'number', 'pages'];
+            var show = ['title', 'edition', 'pub_date'];
+            break;
+        case 'articles':
+        case 'poem':
+        case 'story':
+            var hide = ['edition'];
+            var show = ['title', 'pub_date',
+                        'volume', 'number', 'pages', 'publication'];
+            break;
+        case 'other':
+            var hide = [];
+            var show = ['title', 'edition', 'pub_date', 'publication', 'volume',
+                        'number', 'pages'];
+            break;
     }
+
+    toggleNode(hide, show);
+
 }

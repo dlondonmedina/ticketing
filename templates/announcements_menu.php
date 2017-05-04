@@ -10,21 +10,23 @@ $list_common = array(
 );
 $list = [
     [
-        'link_value' => 'New Ticket',
+        'link_value' => 'Announcements',
         'atts' => [
-            'href' => '/',
+            'href' => '/announcements.php',
         ]
     ],
     [
-        'link_value' => 'Open Tickets',
+        'link_value' => 'Events',
         'atts' => [
-            'id' => 'toggle_table',
-            'href' => '',
-            'onclick' => 'accordionTable()',
-            'data-toggle' => 'collapse',
-            'data-target' => '.resolved',
+            'href' => '/events.php',
         ],
     ],
+    [
+        'link_value' => 'Publications',
+        'atts' => [
+            'href' => '/publications.php',
+        ]
+    ]
 ];
 
 

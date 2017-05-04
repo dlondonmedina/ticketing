@@ -6,7 +6,7 @@ try {
 }
 
 require(TEMPLATES . 'header.php');
-require(TEMPLATES . 'menu.php');
+require(TEMPLATES . 'announcements_menu.php');
 
 if ($_POST['submit']) {
     $con = new Connect();

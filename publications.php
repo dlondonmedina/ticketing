@@ -2,17 +2,17 @@
 try {
     require('sec/config.php');
 } catch (Exception $e) {
-    header('Location: 404.php');
+    header('Location: index.php');
 }
 
 require(TEMPLATES . 'header.php');
-require(TEMPLATES . 'menu.php');
+require(TEMPLATES . 'announcements_menu.php');
 
 if($_POST['submit']) {
     $con = new Connect();
     $con = $con->connect();
     $rep = new Report($con);
-    $report->record_publication($_POST);
+    $rep->record_publication($_POST);
     $con = null;
 }
 
@@ -61,7 +61,11 @@ $fields = [];
 $vals = [
     'title' => 'Title',
     'publication' => 'Publication',
-    'pub_date' => 'Date'
+    'edition' => 'Edition',
+    'volume' => 'Volume',
+    'number' => 'Number',
+    'pub_date' => 'Date',
+    'pages' => 'Page Range'
     ];
 foreach($vals as $k => $v) {
     $field = [
@@ -86,13 +90,13 @@ $a = [
     'id' => 'bibliography',
     'class' => 'form-group',
 ];
-$pub .= $form->add_field_set($fields, $a, 'Bibliographic Information');
+$pub .= $form->add_form_group($fields, $a, 'Bibliographic Information');
 $a = array(
     'type' => 'submit',
     'name' => 'submit',
     'id' => 'submit_button',
     'class' => 'btn btn-info btn-lg',
-    'value' => 'Submit'
+    'value' => 'submit'
 );
 
 $pub .= $form->add_button('Submit', $a);

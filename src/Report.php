@@ -22,7 +22,9 @@ class Report {
     public function record_report($vals, $resolved = "unresolved") {
         $conn = $this->conn;
         try {
-            $stmt = $conn->prepare("INSERT INTO reports (netid, message, topic, urgency, status) values (:netid, :message, :topic, :urgency, :status);");
+            $stmt = $conn->prepare("INSERT INTO reports (netid, message, topic,
+                                    urgency, status) values (:netid, :message,
+                                    :topic, :urgency, :status);");
             $stmt->bindParam(':netid', $this->user, PDO::PARAM_STR);
             $stmt->bindParam(':message', $vals['message'], PDO::PARAM_STR);
             $stmt->bindParam(':topic', $vals['topic'], PDO::PARAM_STR);
@@ -139,13 +141,38 @@ class Report {
     */
     public function record_publication($vals) {
         $con = $this->conn;
+        $edition = !empty($vals['edition']) ? $vals['edition'] : 0;
+        $volume = !empty($vals['volume']) ? $vals['volume'] : 0;
+        $number = !empty($vals['number']) ? $vals['number'] : 0;
         try {
-            $stmt = $conn->prepare("INSERT INTO publications (netid, title, journal, pub_date, type) VALUES (:title, :journal, :pub_date, :type);");
+            $stmt = $con->prepare("INSERT INTO publications (
+                                    netid,
+                                    title,
+                                    publication,
+                                    edition,
+                                    volume,
+                                    num,
+                                    pub_date,
+                                    pages,
+                                    type) VALUES (
+                                    :netid,
+                                    :title,
+                                    :publication,
+                                    :edition,
+                                    :volume,
+                                    :num,
+                                    :pub_date,
+                                    :pages,
+                                    :type);");
             $stmt->bindParam(':netid', $this->user, PDO::PARAM_STR);
             $stmt->bindParam(':title', $vals['title'], PDO::PARAM_STR);
-            $stmt->bindParam(':journal', $vals['publication'], PDO::PARAM_STR);
+            $stmt->bindParam(':publication', $vals['publication'], PDO::PARAM_STR);
+            $stmt->bindParam(':edition', $edition, PDO::PARAM_INT);
+            $stmt->bindParam(':volume', $volume, PDO::PARAM_INT);
+            $stmt->bindParam(':num', $number, PDO::PARAM_INT);
             $stmt->bindParam(':pub_date', $vals['pub_date'], PDO::PARAM_STR);
-            $stmt->bindParam(':type', $vals['type'], PDO::PARAM_STR);
+            $stmt->bindParam(':pages', $vals['pages'], PDO::PARAM_STR);
+            $stmt->bindParam('type', $vals['type'], PDO::PARAM_STR);
             $stmt->execute();
 
         } catch (PDOException $e) {

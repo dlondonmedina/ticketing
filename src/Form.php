@@ -144,6 +144,43 @@
     }
 
     /**
+    * Function for adding fieldset to form
+    * @param attr_ar is the attributes for the fieldset.
+    * @param legend is the legend for the fieldset if any.
+    * @param fields is an array
+    *   $fields = array();
+    *   $fields[] = array(
+    *  'div_atts' => array(),
+    *  'label' => '',
+    *  'type' => '',
+    *   'name' => '',
+    *   'id' => '',
+    *   'value' => '',
+    *   'text' => '',
+    *   'attributes' => array(),
+    *   );
+    */
+    function add_form_group($fields = array(), $attr_ar = array(),
+                        $legend = null ) {
+        $str = '<div ';
+        $str .= !empty($attr_ar) ? Utilities::add_attributes($attr_ar) . '>' : '>';
+        $str .= isset($legend) ? '<legend>' . $legend . '</legend><br />' : '';
+
+        foreach ($fields as $field) {
+            $in = $this->add_input($field['type'], $field['value'], $field['attributes']);
+            $in .= isset($field['text']) ? $field['text'] : '';
+            $in = isset($field['label']) ? $this->add_label($field['label'], $field['label_val']) . $in : $in;
+
+            $str .= isset($field['div_atts']) ? Utilities::add_tags('div', $in, $field['div_atts']) : $in;
+        }
+
+        $str .= '</div>';
+
+        return $str;
+
+    }
+
+    /**
     * Add a button to the form.
     * @param text appears next to button.
     * @param atts is attributes for button.

@@ -10,19 +10,15 @@ $list_common = array(
 );
 $list = [
     [
-        'link_value' => 'New Ticket',
+        'link_value' => 'Announcements',
         'atts' => [
-            'href' => '/',
+            'href' => '/announcements.php',
         ]
     ],
     [
-        'link_value' => 'Open Tickets',
+        'link_value' => 'Helpdesk',
         'atts' => [
-            'id' => 'toggle_table',
-            'href' => '',
-            'onclick' => 'accordionTable()',
-            'data-toggle' => 'collapse',
-            'data-target' => '.resolved',
+            'href' => '/helpdesk.php',
         ],
     ],
 ];

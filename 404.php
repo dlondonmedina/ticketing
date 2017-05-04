@@ -1,7 +1,7 @@
 <?php
 require('sec/config.php');
 require(TEMPLATES . 'header.php');
-require(TEMPLATES . 'menu.php');
+require(TEMPLATES . 'default_menu.php');
 ?>
 <div class="container">
     <div class="well" >
@@ -11,18 +11,11 @@ require(TEMPLATES . 'menu.php');
             </figure>
         </div>
         <div class="well">
-            <div id="not-found" class="row">
-                <div class="col-md-8 text-center">
-
-                        <p class="not-found not-found-text">
-                        Sorry...looks like you took a wrong turn.
-                        </p>
-
-
-                </div>
-                <div class="col-md-4 text-center">
-                    <a href="/" role="button" class="btn btn-primary btn-lg not-found" aria-pressed="true">Go Back!</a>
-                </div>
+            <div id="not-found" class="row text-center">
+                <p class="not-found not-found-text">
+                Sorry...looks like you took a wrong turn.
+                </p>
+                <a href="/" role="button" class="btn btn-primary btn-lg not-found" aria-pressed="true">Go Back!</a>
             </div>
         </div>
     </div>
