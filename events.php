@@ -14,6 +14,7 @@ if ($_POST['submit']) {
 
 }
 
+print "Coming Soon!";
 
 $form = new Form();
 $a = array(
