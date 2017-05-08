@@ -86,8 +86,9 @@ class Page {
   * attributes
   * @return html string to be rendered.
   */
-  function start_body($pre_content, $wrappers) {
-    $html = '<body>';
+  function start_body($pre_content, $wrappers, $atts_ar = array()) {
+    $html = '<body';
+    $html .= !empty($attr_ar) ? Utilities::add_attributes($attr_ar) . '>' : '>';
     $html .= isset($pre_content) ? $pre_content : '';
 
     if (isset($wrappers)) {

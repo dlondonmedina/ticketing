@@ -107,7 +107,7 @@ $mContent = '<header>
         </p>
     </header>';
 $html = $page->create_part($mContent . $panel, $a);
-$page->render($html);
+
 
 $content = '
         <div class="card card-outline-secondary text-xs-center">
@@ -121,8 +121,9 @@ $content = '
         </div>
 ';
 
-$html = $page->create_part($content, ['class' => 'col-md-4 aside']);
-$page->render($html . '</div><!-- end row -->');
+$html .= $page->create_part($content, ['class' => 'col-md-4 aside']);
+$html .= '</div> <!-- end row -->';
+
 
 // Get Results from db.
 $con = new Connect();
@@ -136,11 +137,11 @@ if (isset($results)) {
     $t = $table->display_results($results);
     $a = array(
         'id' => 'resultsTable',
-        'class' => ''
+        'class' => 'container'
     );
-    $html = $page->create_part($t, $a);
-    $html = Utilities::add_tags('div', $html, ['class' => 'container']);
-    $page->render($html);
-}
+    $html .= $page->create_part($t, $a);
 
+}
+$html = $page->create_part($html, ['class' => 'container']);
+$page->render($html);
 require(TEMPLATES . 'footer.php');

@@ -52,7 +52,7 @@ $modal_form .= $form->add_button('Submit', $atts);
 $modal_form .= $form->end_form();
 $html = $pop->modal_popup('Ticket', $modal_body, $modal_form);
 $html .= '<br />';
-$page->render($html);
+// $page->render($html);
 
 $con = new Connect();
 $con = $con->connect();
@@ -60,9 +60,9 @@ $r = new Retrieve($con);
 $results = $r->admin_retrieve();
 if (!empty($results)) {
     $table = new Table();
-    $html = $table->display_admin($results);
+    $html .= $table->display_admin($results);
 } else {
-    $html = '
+    $html .= '
     <div>
         <img src="img/cardimg.png" class="img-responsive center-block" max-width="500px" alt="cute cat">
         <p>
@@ -70,19 +70,8 @@ if (!empty($results)) {
         </p>
     </div>';
 }
-
+$html = $page->create_part($html, ['class' => 'container']);
 $page->render($html);
 
-$html = '<script type="text/javascript">
-    function fillModal(sel) {
-        var row = document.getElementById("myTable").rows.namedItem("ticket_" + sel);
-        var val = row.cells[0].innerHTML;
-        document.getElementById("ticket_id").innerHTML = val;
-        document.getElementById("netid").innerHTML = row.cells[1].innerHTML;
-        document.getElementById("date").innerHTML = row.cells[6].innerHTML;
-        document.getElementById("status").innerHTML = row.cells[5].innerHTML;
-        document.getElementById("message").innerHTML = row.cells[2].innerHTML;
-        document.getElementById("ticket").setAttribute("value", val);
-}</script>';
-$page->render($html);
+
 require(TEMPLATES . 'footer.php');

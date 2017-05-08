@@ -66,7 +66,7 @@ class Retrieve {
     public function user_retrieve() {
 
         if (!isset($this->user)) {
-            header(TEMPLATES . 'login.html');
+            header('Location: index.php');
         } elseif (in_array($this->user, ADMIN_USERS)) {
             $out = $this->admin_retrieve();
         } elseif (in_array($this->user, REG_USERS)) {
@@ -100,5 +100,40 @@ class Retrieve {
         return $out;
     }
 
+    /**
+    *
+    * Get publications with or without a target
+    * @param target is the user whose pubs you want.
+    * @return results associative array of all rows of data.
+    */
+    private function get_publications($target = null) {
+        // define db connection
+        $conn = $this->conn;
+        if (!$target) {
+            $stmt = $conn->prepare("SELECT * from publications");
+        } else {
+            $stmt = $conn->prepare("SELECT * FROM publications WHERE netid=:netid");
+            $stmt->bindParam(":netid", $target, PDO::PARAM_STR);
+        }
+        $stmt->execute();
+        $out = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $out;
+
+    }
+
+
+    public function retrieve_pubs($filter=null) {
+        if (!isset($this->user)) {
+            header('Location: index.php');
+        } elseif (in_array($this->user, ADMIN_USERS) ||
+                    in_array($this->user, REG_USERS)) {
+            $out = $this->get_publications($filter);
+        } else {
+            header('Location: 404.php');;
+        }
+
+        return $out;
+    }
 
 }

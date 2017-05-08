@@ -48,4 +48,20 @@ class Utilities {
       }
       return $randomString;
   }
+
+  function check_login($login, $con) {
+      try {
+          $stmt = $con->prepare("SELECT uwnetid from people where uwnetid = :uwnetid");
+          $stmt->bindParam(":uwnetid", $login, PDO::PARAM_STR);
+          $stmt->execute();
+          return true;
+      } catch (PDOException $e) {
+          echo "Trouble reaching people data: " . $e->getMessage();
+          return false;
+      } catch (Exception $e) {
+          echo "Something else went wrong: " . $e->getMessage();
+          return false;
+      }
+
+  }
 }

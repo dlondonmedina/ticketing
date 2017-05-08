@@ -40,13 +40,5 @@ $menu = Utilities::add_tags('div', $menu, ['class' => 'navbar-header']);
 $menu = Utilities::add_tags('div', $menu, ['class' => 'container']);
 $navigation = $nav->make_navbar($menu, 'navbar', 'navbar navbar-default');
 
-$wrappers = [
-    [
-        'tag' => 'div',
-        'attributes' => [
-            'class' => 'container',
-        ]
-    ],
-];
-$start_body = $page->start_body($navigation, $wrappers);
-$page->render($start_body);
+$menu = $page->create_part($navigation);
+$page->render($menu);

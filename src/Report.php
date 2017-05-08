@@ -153,6 +153,7 @@ class Report {
                                     volume,
                                     num,
                                     pub_date,
+                                    publisher,
                                     pages,
                                     type) VALUES (
                                     :netid,
@@ -162,6 +163,7 @@ class Report {
                                     :volume,
                                     :num,
                                     :pub_date,
+                                    :publisher,
                                     :pages,
                                     :type);");
             $stmt->bindParam(':netid', $this->user, PDO::PARAM_STR);
@@ -171,6 +173,7 @@ class Report {
             $stmt->bindParam(':volume', $volume, PDO::PARAM_INT);
             $stmt->bindParam(':num', $number, PDO::PARAM_INT);
             $stmt->bindParam(':pub_date', $vals['pub_date'], PDO::PARAM_STR);
+            $stmt->bindParam(':publisher', $vals['publisher'], PDO::PARAM_STR);
             $stmt->bindParam(':pages', $vals['pages'], PDO::PARAM_STR);
             $stmt->bindParam('type', $vals['type'], PDO::PARAM_STR);
             $stmt->execute();
@@ -182,5 +185,30 @@ class Report {
             echo "Something else went wrong with error: " . $e->getMessage();
             die();
         }
+
+        // if this worked, now we can move on to author's table.
+        // Still needs to account for departmental coauthors.
+        if (!empty($vals['authors'])) {
+            $authors = explode(';', $vals['authors']);
+            $stmt = $con->prepare("SELECT max(id) from publications where
+                                netid=:netid");
+            $stmt->bindParam(':netid', $this->user, PDO::PARAM_STR);
+            $stmt->execute();
+            $id = $stmt->fetch();
+            $pub_id = $id[0];
+            foreach ($authors as $author) {
+                $asplit = explode(" ", $author);
+                $lname = end($asplit);
+                $fname = implode(' ', array_slice($asplit, 0, sizeof($asplit)-1));
+                $stmt = $con->prepare("INSERT INTO author_overflow (pub_id,
+                                    fname, lname) values (:pub_id, :fname, :lname)");
+                $stmt->bindParam(':pub_id', $pub_id, PDO::PARAM_INT);
+                $stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
+                $stmt->bindParam(':lname', $lname, PDO::PARAM_STR);
+                $stmt->execute();
+            }
+
+        }
     }
+
 }

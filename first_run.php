@@ -47,14 +47,35 @@ if ($_POST = filter_input_array(INPUT_POST, FILTER_SANITIZED_STRING)) {
             staff varchar(10),
             time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
-            $con->exec($sql);
+        $con->exec($sql);
+
+        $con->exec("DROP TABLE IF EXISTS publications");
+        $sql = "create table publications(id int auto_increment primary key,
+            netid varchar(9) not null,
+            title text,
+            publication text,
+            edition int,
+            volume int,
+            num int,
+            pub_date varchar(15),
+            publisher varchar(50),
+            pages varchar(20),
+            type varchar(20))";
+        $con->exec($sql);
+
+        $con->exec("DROP TABLE IF EXISTS author_overflow");
+        $sql = "create table author_overflow(pub_id int,
+            fname varchar(100),
+            lname varchar(100)
+            foreign key (pub_id) references publications(id)
+            on delete cascade)";
+        $con->exec($sql);
 
         } catch (Exception $e) {
             echo "Could not create tables";
-            echo "Error Message: " . getMessage($e);
+            echo "Error Message: " . $e->getMessage();
             die();
         }
-    }
 
 
         // Create ConfigFile

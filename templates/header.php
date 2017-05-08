@@ -6,6 +6,31 @@ function class_autoloader($class_name) {
 
 spl_autoload_register("class_autoloader");
 
+// check login. They should be logged in. If not, then we're in trouble.
+$raw_uwnetid = (isset($_SERVER['REMOTE_USER'])) ? $_SERVER['REMOTE_USER'] : 'medinad';
+$uwnetid = preg_replace('/[^A-Za-z0-9\-]/', '', $raw_uwnetid);
+// $clean['uwnetid'] = set_netid($uwnetid);  // see /engl/scripts/header2017.php
+// $userOK = ($clean['uwnetid']=="eungrad" || $clean['uwnetid']=="graduate");  // assume false, unless user is eungrad
+$is_editor = false;  // needed, since 'eungrad' & 'graduate' get a pass, but aren't editors (which might change)
+$con = new Connect();
+$con = $con->connect();
+$logged_in = Utilities::check_login($uwnetid, $con);
+
+// Remove this line when fixed
+$logged_in = true; // REMOVE THIS!!!!
+
+if (!$logged_in) {
+    header('Location: https://depts.washington.edu/engl/');
+} else {
+    if (in_array($uwnetid, ADMIN_USERS)) {
+        $is_editor = true;
+    } else {
+        $is_editor = false;
+    }
+}
+
+
+// start new page
 $page = new Page();
 $styles = array(
     'one' => array(
@@ -43,5 +68,23 @@ $meta = array(
 $header = $page->make_head(SITE_NAME, 'en', 'utf-8', $styles, $scripts, $meta);
 $page->render($header);
 
-// Add Masthead
-include('masthead.php');
+// Start body
+$wrappers = [
+    [
+        'tag' => 'div',
+        'attributes' => [
+            'class' => 'container'
+        ]
+    ]
+];
+$html = $page->start_body(null, null, ['id' => 'home']);
+$content = '<a href="#content">skip to content</a>';
+$a = ['id' => 'skiptocontent'];
+$html .= $page->create_part($content, $a);
+
+try {
+    $html .= file_get_contents('templates/masthead.html');
+} catch (Exception $e) {
+    $html .= "";
+}
+$page->render($html);

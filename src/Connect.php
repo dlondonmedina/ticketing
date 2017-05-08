@@ -49,7 +49,7 @@ class Connect {
           // Establish connection
           $this->connection = new PDO('mysql:host='. $this->host.';dbname='. $this->db.';charset=utf8mb4',
            $this->uname, $this->pword, array(
-             PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+             PDO::ATTR_EMULATE_PREPARES => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
        } catch (PDOException $ex) {
           echo "Connection failed!";
