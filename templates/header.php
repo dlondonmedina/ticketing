@@ -12,12 +12,14 @@ $uwnetid = preg_replace('/[^A-Za-z0-9\-]/', '', $raw_uwnetid);
 // $clean['uwnetid'] = set_netid($uwnetid);  // see /engl/scripts/header2017.php
 // $userOK = ($clean['uwnetid']=="eungrad" || $clean['uwnetid']=="graduate");  // assume false, unless user is eungrad
 $is_editor = false;  // needed, since 'eungrad' & 'graduate' get a pass, but aren't editors (which might change)
-$con = new Connect();
-$con = $con->connect();
-$logged_in = Utilities::check_login($uwnetid, $con);
+if ($_SERVER['SERVER_ADDR'] === "127.0.0.1") {
+    $logged_in = true;
+} else {
+    $con = new Connect();
+    $con = $con->connect();
+    $logged_in = Utilities::check_login($uwnetid, $con);
+}
 
-// Remove this line when fixed
-$logged_in = true; // REMOVE THIS!!!!
 
 if (!$logged_in) {
     header('Location: https://depts.washington.edu/engl/');

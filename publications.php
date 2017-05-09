@@ -28,7 +28,7 @@ $pub = $form->start_form($a);
 // Start radio button list
 $fields = [];
 $vals = [
-    'book' => 'Book',
+    'book' => 'Book/Critical Edition/Textbook',
     'edited_collection' => 'Edited Collection',
     'edition' => 'Edition',
     'articles' => 'Article/Essay/Chapter',
@@ -110,15 +110,15 @@ $inner = Utilities::add_tags('div', $pub, ['class' => 'panel-body']);
 $panel = Utilities::add_tags('div', $inner, ['class' => 'panel panel-primary']);
 
 $intro = '
-<h1>English Department Publication List 2016-2017</h1>
+<h2>English Department Publication List 2016-2017</h2>
 <p>
 The English Department is seeking to compile a list of publications by our
 faculty and graduate students that have come out during the academic year
-2016-2017. We want to be able to share with each other and with the world the
+2016-2017. We want to be able to share with each other the
 exciting research and writing that so many of you have been doing on top of
 your many other duties and responsibilities. Below we\'re asking you to enter
 the bibliographic information for each of your publications (if any) from
-September 2016 onwards. Because we\'re trying to compile a single unified list,
+January 2016 onwards. Because we\'re trying to compile a single unified list,
 we\'re asking you to use MLA 8 citation style
 (see <a href="https://owl.english.purdue.edu/owl/resource/747/22/">
 https://owl.english.purdue.edu/owl/resource/747/22</a>). We\'re also asking
@@ -136,7 +136,9 @@ celebrating.
 Many thanks for taking the time to fill out this form. The recent faculty
 climate and workload survey suggests that we as a department need and want to
 learn more about each other\'s scholarship and academic commitments; this
-exercise is one preliminary step toward that end.
+exercise is one preliminary step toward that end. In the future, we will be
+creating further opportunities to recognize and celebrate the full range of work
+our faculty does.
 </p><br />';
 $con = new Connect();
 $con = $con->connect();

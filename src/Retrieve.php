@@ -123,17 +123,54 @@ class Retrieve {
     }
 
 
+    private function get_author($target) {
+        $conn = $this->conn;
+        try {
+            $stmt = $conn->prepare("SELECT Last, First, Middle from people WHERE uwnetid=:netid");
+            $stmt->bindParam(":netid", $target, PDO::PARAM_STR);
+            $stmt->execute();
+            $out = $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            print "Something went wrong getting authors: " . $e->getMessage();
+            die();
+        }
+        return $out;
+
+    }
+
+    private function get_overflow_authors($target) {
+        $conn = $this->conn;
+        try {
+            $stmt = $conn->prepare("SELECT fname, lname from author_overflow
+                                    WHERE pub_id=:id");
+            $stmt->bindParam(":id", $target, PDO::PARAM_INT);
+            $stmt->execute();
+            $out = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            print "Something went wrong: " . $e->getMessage();
+            die();
+        }
+        return $out;
+    }
+
     public function retrieve_pubs($filter=null) {
+        $results = [];
+
         if (!isset($this->user)) {
             header('Location: index.php');
         } elseif (in_array($this->user, ADMIN_USERS) ||
                     in_array($this->user, REG_USERS)) {
-            $out = $this->get_publications($filter);
+            $pubs = $this->get_publications($filter);
+            foreach ($pubs as $pub) {
+                $over_auths = $this->get_overflow_authors($pub['id']);
+                $auth = $this->get_author($pub['netid']);
+                array_push($results, [$auth, $over_auths, $pub]);
+            }
+
         } else {
             header('Location: 404.php');;
         }
-
-        return $out;
+        return $results;
     }
 
 }

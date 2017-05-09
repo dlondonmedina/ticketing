@@ -107,7 +107,7 @@ if ($_POST = filter_input_array(INPUT_POST, FILTER_SANITIZED_STRING)) {
             echo "Could not write config file";
             echo "Error Message: " . getMessage($e);
         }
-
+}
 
  ?>
  <!DOCTYPE html>

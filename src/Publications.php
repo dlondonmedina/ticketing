@@ -8,21 +8,33 @@
 class Publications {
 
     public function web_display($results) {
-        $html = '<h2>Results: </h2>';
-        foreach ($results as $key => $v) {
-            $html .= $this->make_mla($v);
+        if($results) {
+            $html = '<h2>Results: </h2>';
+            foreach ($results as $key => $v) {
+                $html .= $this->make_mla($v);
+
+            }
         }
+
         return $html;
-        // foreach ($results as $key => $value) {
-        //     $html .= $key . " : " . $value . "<br />";
-        // }
-        // return $html;
     }
 
-    public function make_mla($result) {
+    public function make_mla($in) {
         $str = '<p>';
-        $id = $result['netid'];
-        $str .= $id . '. ';
+        $dept_auth = $in[0];
+        $other_auths = $in[1];
+        $result = $in[2];
+        $str .= $dept_auth['Last'] . ', ' . $dept_auth['First'];
+        $str .= !empty($dept_auth['Middle']) ? ' ' . $dept_auth['Middle'] : '';
+        if (!empty($other_auths)) {
+            $str .= ', ';
+            for ($i = 0; $i < sizeof($other_auths) - 1; $i++) {
+                $str .= $other_auths[$i]['lname'] . ', ' . $other_auths[$i]['fname'] . ', ';
+            }
+            $last = end($other_auths);
+            $str .= $last['fname'] . ' ' . $last['lname'];
+        }
+        $str .= '. ';
         // $str = $result['lname'] . ', ' . $result['fname'] . '. ';
         if (!empty($result['publication'])) {
             $str .= "\"" . $result['title'] . ".\" ";

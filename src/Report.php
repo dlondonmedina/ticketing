@@ -200,6 +200,7 @@ class Report {
                 $asplit = explode(" ", $author);
                 $lname = end($asplit);
                 $fname = implode(' ', array_slice($asplit, 0, sizeof($asplit)-1));
+                $fname = trim($fname);
                 $stmt = $con->prepare("INSERT INTO author_overflow (pub_id,
                                     fname, lname) values (:pub_id, :fname, :lname)");
                 $stmt->bindParam(':pub_id', $pub_id, PDO::PARAM_INT);
