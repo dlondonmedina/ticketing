@@ -22,7 +22,7 @@ class Report {
     public function record_report($vals, $resolved = "unresolved") {
         $conn = $this->conn;
         try {
-            $stmt = $conn->prepare("INSERT INTO reports (netid, message, topic,
+            $stmt = $conn->prepare("INSERT INTO hd_reports (netid, message, topic,
                                     urgency, status) values (:netid, :message,
                                     :topic, :urgency, :status);");
             $stmt->bindParam(':netid', $this->user, PDO::PARAM_STR);
@@ -100,12 +100,12 @@ class Report {
         if (in_array($this->user, ADMIN_USERS)) {
             if(isset($vals['resolved'])) {
                 $res = date('m/d/y @ h:m');
-                $stmt = $conn->prepare('UPDATE reports SET status=REPLACE(status, "unresolved", "resolved") WHERE id=:id' );
+                $stmt = $conn->prepare('UPDATE hd_reports SET status=REPLACE(status, "unresolved", "resolved") WHERE id=:id' );
                 $stmt->bindParam(':id', $vals['ticket'], PDO::PARAM_INT);
                 $stmt->execute();
             }
             if(!empty($vals['note'])) {
-                $stmt = $conn->prepare('INSERT INTO notes (ticket, note, staff) VALUES (:ticket, :note, :staff)');
+                $stmt = $conn->prepare('INSERT INTO hd_notes (ticket, note, staff) VALUES (:ticket, :note, :staff)');
                 $stmt->bindParam(':ticket', $vals['ticket'], PDO::PARAM_INT);
                 $stmt->bindParam(':note', $vals['note'], PDO::PARAM_STR);
                 $stmt->bindParam(':staff', $this->id, PDO::PARAM_STR);

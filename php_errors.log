@@ -5368,3 +5368,244 @@ Stack trace:
 [09-May-2017 14:47:05 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
 [09-May-2017 14:47:05 America/Los_Angeles] PHP Notice:  Undefined variable: html in /home/dylan/www/helpdesk/src/Publications.php on line 19
 [09-May-2017 14:47:05 America/Los_Angeles] PHP Notice:  Use of undefined constant Y - assumed 'Y' in /home/dylan/www/helpdesk/templates/footer.php on line 2
+[09-May-2017 14:59:14 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 12
+[09-May-2017 14:59:14 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 26
+[09-May-2017 14:59:14 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(132): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 14:59:14 America/Los_Angeles] PHP Notice:  Use of undefined constant Y - assumed 'Y' in /home/dylan/www/helpdesk/templates/footer.php on line 2
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/publications.php on line 11
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Undefined variable: html in /home/dylan/www/helpdesk/src/Publications.php on line 19
+[09-May-2017 14:59:19 America/Los_Angeles] PHP Notice:  Use of undefined constant Y - assumed 'Y' in /home/dylan/www/helpdesk/templates/footer.php on line 2
+[09-May-2017 15:01:15 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 12
+[09-May-2017 15:01:15 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 26
+[09-May-2017 15:01:15 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(132): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:01:16 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 12
+[09-May-2017 15:01:16 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 26
+[09-May-2017 15:01:16 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(132): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:01:17 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 12
+[09-May-2017 15:01:17 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 26
+[09-May-2017 15:01:17 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(132): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:04:12 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 12
+[09-May-2017 15:04:12 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 26
+[09-May-2017 15:04:12 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(132): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:04:20 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:04:20 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 25
+[09-May-2017 15:04:20 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:04:27 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 25
+[09-May-2017 15:04:27 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:04:28 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 25
+[09-May-2017 15:04:28 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:04:30 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 25
+[09-May-2017 15:04:30 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:04:34 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:04:34 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 25
+[09-May-2017 15:04:34 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:04:53 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:04:53 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:04:53 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:04:53 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:04:59 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:04:59 America/Los_Angeles] PHP Notice:  Undefined variable: ticket in /home/dylan/www/helpdesk/index.php on line 25
+[09-May-2017 15:04:59 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:07:12 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:07:12 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/publications.php on line 11
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Undefined variable: html in /home/dylan/www/helpdesk/src/Publications.php on line 19
+[09-May-2017 15:08:36 America/Los_Angeles] PHP Notice:  Use of undefined constant Y - assumed 'Y' in /home/dylan/www/helpdesk/templates/footer.php on line 2
+[09-May-2017 15:08:38 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/events.php on line 11
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/publications.php on line 11
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: label_val in /home/dylan/www/helpdesk/src/Form.php on line 101
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined index: value in /home/dylan/www/helpdesk/src/Form.php on line 170
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Undefined variable: html in /home/dylan/www/helpdesk/src/Publications.php on line 19
+[09-May-2017 15:08:40 America/Los_Angeles] PHP Notice:  Use of undefined constant Y - assumed 'Y' in /home/dylan/www/helpdesk/templates/footer.php on line 2
+[09-May-2017 15:09:10 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:09:10 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:09:13 America/Los_Angeles] PHP Notice:  Use of undefined constant Y - assumed 'Y' in /home/dylan/www/helpdesk/templates/footer.php on line 2
+[09-May-2017 15:09:15 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:09:15 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:10:37 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:10:37 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:10:43 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:10:43 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:12:28 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:12:28 America/Los_Angeles] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'engl.reports' doesn't exist in /home/dylan/www/helpdesk/src/Retrieve.php:97
+Stack trace:
+#0 /home/dylan/www/helpdesk/src/Retrieve.php(97): PDOStatement->execute()
+#1 /home/dylan/www/helpdesk/src/Retrieve.php(27): Retrieve->get_results(NULL)
+#2 /home/dylan/www/helpdesk/src/Retrieve.php(71): Retrieve->admin_retrieve()
+#3 /home/dylan/www/helpdesk/index.php(131): Retrieve->user_retrieve()
+#4 {main}
+  thrown in /home/dylan/www/helpdesk/src/Retrieve.php on line 97
+[09-May-2017 15:14:53 America/Los_Angeles] PHP Notice:  Undefined index: submit in /home/dylan/www/helpdesk/index.php on line 11
+[09-May-2017 15:14:53 America/Los_Angeles] PHP Notice:  Use of undefined constant Y - assumed 'Y' in /home/dylan/www/helpdesk/templates/footer.php on line 2

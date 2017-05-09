@@ -43,11 +43,11 @@ class Retrieve {
             // define db connection
             $conn = $this->conn;
             if($all_users) {
-                $stmt = $conn->prepare("SELECT DISTINCT netid FROM reports");
+                $stmt = $conn->prepare("SELECT DISTINCT netid FROM hd_reports");
             } else {
                 $unresolved = "unresolved";
                 $stmt = $conn->prepare(
-                "SELECT DISTINCT netid FROM reports where status=:status"
+                "SELECT DISTINCT netid FROM hd_reports where status=:status"
             );
             $stmt->bindParam(":status", $unresolved, PDO::PARAM_STR);
         }
@@ -89,9 +89,9 @@ class Retrieve {
         //define db connection
         $conn = $this->conn;
         if (!$target) {
-            $stmt = $conn->prepare("SELECT * FROM reports");
+            $stmt = $conn->prepare("SELECT * FROM hd_reports");
         } else {
-            $stmt = $conn->prepare("SELECT * FROM reports where netid=:netid");
+            $stmt = $conn->prepare("SELECT * FROM hd_reports where netid=:netid");
             $stmt->bindParam(":netid", $target, PDO::PARAM_STR);
         }
         $stmt->execute();

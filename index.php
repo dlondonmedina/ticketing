@@ -8,7 +8,6 @@ try {
 require(TEMPLATES . 'header.php');
 require(TEMPLATES . 'menu.php');
 
-
 if($_POST['submit']) {
     $con = new Connect();
     $con = $con->connect();
@@ -19,11 +18,11 @@ if($_POST['submit']) {
 
 $form = new Form();
 $a = array(
-    'action' => '',
+    'action' => '/',
     'method' => 'post',
     'id' => 'main_form',
 );
-$ticket .= $form->start_form($a);
+$ticket = $form->start_form($a);
 $f = Utilities::add_label('reportmessage', 'What is the issue?');
 
 $a = array(
