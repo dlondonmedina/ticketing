@@ -146,6 +146,9 @@ $retrieve = new Retrieve($con);
 $results = $retrieve->retrieve_pubs();
 $pub = new Publications();
 $list_of_pubs = $pub->web_display($results);
+if($is_editor) {
+    $list_of_pubs = Utilities::add_tags('textarea', $list_of_pubs);
+}
 $html = $page->create_part($intro . $panel . $list_of_pubs, ['class' => 'container']);
 $page->render($html);
 

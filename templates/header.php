@@ -7,7 +7,8 @@ function class_autoloader($class_name) {
 spl_autoload_register("class_autoloader");
 
 // check login. They should be logged in. If not, then we're in trouble.
-$raw_uwnetid = (isset($_SERVER['REMOTE_USER'])) ? $_SERVER['REMOTE_USER'] : 'medinad';
+$_SERVER['REMOTE_USER'] = (isset($_SERVER['REMOTE_USER'])) ? $_SERVER['REMOTE_USER'] : 'jscon';
+$raw_uwnetid = $_SERVER['REMOTE_USER'];
 $uwnetid = preg_replace('/[^A-Za-z0-9\-]/', '', $raw_uwnetid);
 // $clean['uwnetid'] = set_netid($uwnetid);  // see /engl/scripts/header2017.php
 // $userOK = ($clean['uwnetid']=="eungrad" || $clean['uwnetid']=="graduate");  // assume false, unless user is eungrad
@@ -54,6 +55,9 @@ $scripts = [
         'src' => 'js/main.js',
     ]
 ];
+if ($is_editor) {
+    array_push($scripts, ['src' => 'https://cloud.tinymce.com/stable/tinymce.min.js']);
+}
 
 
 $meta = [
@@ -70,7 +74,30 @@ $meta = [
         'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no',
     ],
 ];
-$header = $page->make_head(SITE_NAME, 'en', 'utf-8', $styles, $scripts, $meta);
+$custom = '';
+if ($is_editor) {
+    $custom = '<script>tinymce.init({ selector: "textarea",
+  height: 500,
+  theme: "modern",
+  plugins: [
+    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+    "searchreplace wordcount visualblocks visualchars code fullscreen",
+    "insertdatetime media nonbreaking save table contextmenu directionality",
+    "emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help"
+  ],
+  toolbar1: "undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+  toolbar2: "print preview media | forecolor backcolor emoticons | codesample help",
+  image_advtab: true,
+  templates: [
+    { title: "Test template 1", content: "Test 1" },
+    { title: "Test template 2", content: "Test 2" }
+  ],
+  content_css: [
+    "//fonts.googleapis.com/css?family=Lato:300,300i,400,400i",
+    "//www.tinymce.com/css/codepen.min.css"
+  ]});</script>';
+}
+$header = $page->make_head(SITE_NAME, 'en', 'utf-8', $styles, $scripts, $meta, $custom);
 $page->render($header);
 
 // Start body

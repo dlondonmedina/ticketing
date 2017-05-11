@@ -156,20 +156,15 @@ class Retrieve {
     public function retrieve_pubs($filter=null) {
         $results = [];
 
-        if (!isset($this->user)) {
-            header('Location: index.php');
-        } elseif (in_array($this->user, ADMIN_USERS) ||
-                    in_array($this->user, REG_USERS)) {
-            $pubs = $this->get_publications($filter);
-            foreach ($pubs as $pub) {
-                $over_auths = $this->get_overflow_authors($pub['id']);
-                $auth = $this->get_author($pub['netid']);
-                array_push($results, [$auth, $over_auths, $pub]);
-            }
 
-        } else {
-            header('Location: 404.php');;
+        $pubs = $this->get_publications($filter);
+        foreach ($pubs as $pub) {
+            $over_auths = $this->get_overflow_authors($pub['id']);
+            $auth = $this->get_author($pub['netid']);
+            array_push($results, [$auth, $over_auths, $pub]);
         }
+
+
         return $results;
     }
 
